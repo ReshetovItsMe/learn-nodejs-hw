@@ -4,10 +4,9 @@
   "description": "This is project for home tasks which were made in EPAM NodeJS course",
   "main": "index.js",
   "scripts": {
-    "task1": "nodemon ./task1/index.js",
-    "task1rl": "nodemon ./task1/index-rl.js",
-    "task2": "nodemon ./task2/index.js ./task2/nodejs-hw1-ex1.csv ./task2/books.txt",
-    "task3": "echo \"Error: no test specified\" && exit 1"
+    "babelTask1": "babel-node ./src/task1.js",
+    "babelTask2": "babel-node ./src/task2.js",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline"
   },
   "repository": {
     "type": "git",
@@ -30,6 +29,10 @@
     "csvtojson": "^2.0.10"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
     "nodemon": "^2.0.7"
   }
 }
