@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "babelTask1": "babel-node ./src/task1.js",
-    "babelTask2": "babel-node ./src/task2.js",
+    "babelTask2": "babel-node ./src/task2.js ../task2/nodejs-hw1-ex1.csv ../task2/books.txt",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline"
   },
   "repository": {
