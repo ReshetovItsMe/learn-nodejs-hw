@@ -1,17 +1,16 @@
+
 const csv = require('csvtojson');
 const fs = require('fs');
+const { pipeline } = require('stream');
 
 const inputFilePath = process.argv[2]; // input file from npm task argument
 const outputFilePath = process.argv[3]; // input file from npm task argument
 
-const writeStream = fs.createWriteStream(outputFilePath);
-const readStream = fs.createReadStream(inputFilePath);
-
-readStream.on('error', (err) => {
-  console.log('Error in read stream...', err);
-});
-writeStream.on('error', (err) => {
-  console.log('Error in write stream...', err);
-});
-
-readStream.pipe(csv()).pipe(writeStream);
+pipeline(fs.createReadStream(inputFilePath).pipe(csv()), fs.createWriteStream(outputFilePath),
+  (err) => {
+    if (err) {
+      console.error('Pipeline failed.', err);
+    } else {
+      console.log('Pipeline succeeded.');
+    }
+  });

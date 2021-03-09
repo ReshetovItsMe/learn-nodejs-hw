@@ -7,6 +7,7 @@
     "task1": "nodemon ./task1/index.js",
     "task1rl": "nodemon ./task1/index-rl.js",
     "task2": "nodemon ./task2/index.js ./task2/nodejs-hw1-ex1.csv ./task2/books.txt",
+    "task2pipe": "nodemon ./task2/index-pipe.js ./task2/nodejs-hw1-ex1.csv ./task2/books.txt",
     "task3": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
