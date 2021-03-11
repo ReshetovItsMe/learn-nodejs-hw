@@ -1,0 +1,36 @@
+{
+  "name": "learn-nodejs-hw",
+  "version": "1.0.0",
+  "description": "This is project for home tasks which were made in EPAM NodeJS course",
+  "main": "index.js",
+  "scripts": {
+    "task1": "nodemon ./task1/index.js",
+    "task1rl": "nodemon ./task1/index-rl.js",
+    "task2": "nodemon ./task2/index.js ./task2/nodejs-hw1-ex1.csv ./task2/books.txt",
+    "task2pipe": "nodemon ./task2/index-pipe.js ./task2/nodejs-hw1-ex1.csv ./task2/books.txt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReshetovItsMe/learn-nodejs-hw.git"
+  },
+  "keywords": [
+    "learn",
+    "education",
+    "nodejs",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Vladislav Reshetov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReshetovItsMe/learn-nodejs-hw/issues"
+  },
+  "homepage": "https://github.com/ReshetovItsMe/learn-nodejs-hw#readme",
+  "dependencies": {
+    "byline": "^5.0.0",
+    "csvtojson": "^2.0.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

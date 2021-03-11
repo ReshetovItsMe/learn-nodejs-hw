@@ -1,0 +1,39 @@
+{
+  "name": "learn-nodejs-hw",
+  "version": "1.0.0",
+  "description": "This is project for home tasks which were made in EPAM NodeJS course",
+  "main": "index.js",
+  "scripts": {
+    "babelTask1": "babel-node ./src/task1.js",
+    "babelTask2": "babel-node ./src/task2.js ../task2/nodejs-hw1-ex1.csv ../task2/books.txt",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReshetovItsMe/learn-nodejs-hw.git"
+  },
+  "keywords": [
+    "learn",
+    "education",
+    "nodejs",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Vladislav Reshetov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReshetovItsMe/learn-nodejs-hw/issues"
+  },
+  "homepage": "https://github.com/ReshetovItsMe/learn-nodejs-hw#readme",
+  "dependencies": {
+    "byline": "^5.0.0",
+    "csvtojson": "^2.0.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
+    "nodemon": "^2.0.7"
+  }
+}
