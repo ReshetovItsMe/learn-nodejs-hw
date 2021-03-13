@@ -1,4 +1,6 @@
-# Task 1
+# In-memory CRUD REST service with validation
+
+## Task 1
 
 Write a simple REST service withCRUD operations for User entity.
 
@@ -20,3 +22,14 @@ type User = {
   * get auto-suggest list from limitusers, sorted by login property and filtered by loginSubstringin the login property: getAutoSuggestUsers(loginSubstring, limit);
   * remove user (soft delete–user gets marked with isDeletedflag, but not removed from the collection).
 * Store user’scollection in the service memory (while the service is running)
+
+## Task 2
+
+Add server-side validation for create/update operations of Userentity:
+
+* all fields are required;
+* login validationis required;
+* password must contain letters and numbers;
+* user’s age must be between 4 and 130.
+
+In case of any property does not meet the validation requirements or the field is absent, return 400 (Bad Request) and detailed error message.
