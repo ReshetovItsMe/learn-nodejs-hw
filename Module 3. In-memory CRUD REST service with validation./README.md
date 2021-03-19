@@ -33,10 +33,3 @@ Add server-side validation for create/update operations of User entity:
 * user’s age must be between 4 and 130.
 
 In case of any property does not meet the validation requirements or the field is absent, return 400 (Bad Request) and detailed error message.
-
-EVALUATION CRITERIA 
-1. Task 2.1 is partially implemented (w/o getAutoSuggestUsers or other methods).
-2. Task 2.1 is fulfilled to the full extent.
-3. Task 2.1 eslint rules are applied.
-4. Task 2.2 is fulfilled to the full extent; validation package is used.
-5. Consider to use Typescript.
