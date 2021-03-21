@@ -27,6 +27,12 @@ class UsersSevice {
     public deleteUser(id: string): User[] {
         return this.usersControl.deleteUser(id);
     }
+
+    public getAutoSuggestUsers(loginSubstring: string, limit: number): User[] {
+        const users: User[] = this.usersControl.getUsers()
+            .filter((user: User) => user.login.includes(loginSubstring)).sort();
+        return users.slice(0, limit);
+    }
 }
 
 export default UsersSevice;

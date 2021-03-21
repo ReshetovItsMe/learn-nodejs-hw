@@ -19,6 +19,13 @@ router.get('/', (req, res) => {
   res.json(users);
 });
 
+router.get('/autoSuggest', (req, res) => {
+  const loginSubstring: string = req.query.loginSubstring as string;
+  const limit: number = Number.parseInt(req.query.limit as string);
+  const users: User[] = userService.getAutoSuggestUsers(loginSubstring, limit);
+  res.json(users);
+});
+
 router.post('/addUser', (req, res) => {
   const user: User = req.body;
   if (!!user) {
