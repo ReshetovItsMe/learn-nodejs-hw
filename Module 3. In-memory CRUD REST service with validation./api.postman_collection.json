@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"test\",\n    \"login\": \"test\",\n    \"password\": \"test\",\n    \"age\": 23,\n    \"isDeleted\": false\n}",
+					"raw": "{\n    \"id\": \"test\",\n    \"login\": \"sad3\",\n    \"password\": \"tests2s\",\n    \"age\": 23,\n    \"isDeleted\": false\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -142,7 +142,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"test\",\n    \"login\": \"new test\",\n    \"password\": \"new test\",\n    \"age\": 99,\n    \"isDeleted\": false\n}",
+					"raw": "{\n    \"id\": \"test\",\n    \"login\": \"newtest\",\n    \"password\": \"newtest32\",\n    \"age\": 99,\n    \"isDeleted\": false\n}",
 					"options": {
 						"raw": {
 							"language": "json"

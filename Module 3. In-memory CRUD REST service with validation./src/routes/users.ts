@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { User } from '../interfaces/user';
 import { UsersSevice } from '../services'
+import fieldsValidation from '../middleware/fieldsValidation';
 
 const router = express.Router();
 const userService = new UsersSevice();
@@ -20,30 +21,26 @@ router.get('/', (req, res) => {
 });
 
 router.get('/autoSuggest', (req, res) => {
-  const loginSubstring: string = req.query.loginSubstring as string;
-  const limit: number = Number.parseInt(req.query.limit as string);
-  const users: User[] = userService.getAutoSuggestUsers(loginSubstring, limit);
-  res.json(users);
-});
-
-router.post('/addUser', (req, res) => {
-  const user: User = req.body;
-  if (!!user) {
-    const users: User[] = userService.createUser(user);
-    res.status(201).send(users);
+  if (!!req.query.loginSubstring && !!req.query.limit) {
+    const loginSubstring: string = req.query.loginSubstring as string;
+    const limit: number = Number.parseInt(req.query.limit as string);
+    const users: User[] = userService.getAutoSuggestUsers(loginSubstring, limit);
+    res.json(users);
   } else {
     res.status(400).send('Bad data. Please check your request.');
   }
 });
 
-router.put('/updateUser', (req, res) => {
+router.post('/addUser', fieldsValidation, (req, res) => {
   const user: User = req.body;
-  if (!!user) {
-    const users: User[] = userService.updateUser(user);
-    res.status(201).send(users);
-  } else {
-    res.status(400).send('Bad data. Please check your request.');
-  }
+  const users: User[] = userService.createUser(user);
+  res.status(201).send(users);
+});
+
+router.put('/updateUser', fieldsValidation, (req, res) => {
+  const user: User = req.body;
+  const users: User[] = userService.updateUser(user);
+  res.status(201).send(users);
 });
 
 router.delete('/byId', (req, res) => {
