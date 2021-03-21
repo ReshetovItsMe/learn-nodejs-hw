@@ -31,5 +31,7 @@ Add server-side validation for create/update operations of User entity:
 * login validationis required;
 * password must contain letters and numbers;
 * user’s age must be between 4 and 130.
-
-In case of any property does not meet the validation requirements or the field is absent, return 400 (Bad Request) and detailed error message.
+     
+      
+In case of any property does not meet the validation requirements or the field is absent, return 400 (Bad Request) and detailed error message.    
+For requests validation use special packages like joi (<https://github.com/hapijs/joi/>, <https://www.npmjs.com/package/express-joi-validation/>)
