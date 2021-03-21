@@ -1,0 +1,38 @@
+{
+  "name": "learn-nodejs-hw-module2",
+  "version": "1.0.0",
+  "description": "This is project for home tasks which were made in EPAM NodeJS course",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e ts -w ./src src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReshetovItsMe/learn-nodejs-hw.git"
+  },
+  "keywords": [
+    "learn",
+    "education",
+    "nodejs",
+    "express",
+    "typescript"
+  ],
+  "author": "Vladislav Reshetov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReshetovItsMe/learn-nodejs-hw/issues"
+  },
+  "homepage": "https://github.com/ReshetovItsMe/learn-nodejs-hw#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.34",
+    "eslint": "^7.22.0",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.2.3",
+    "ts-node": "^9.1.1"
+  }
+}
