@@ -27,9 +27,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     try {
         const user: User = req.body;
         await schema.validateAsync(user);
-        next();
-    }
-    catch (err) {
+        return next();
+    } catch (err) {
         console.log(typeof err);
         res.status(400).send('Bad data. Please check your request.');
     }

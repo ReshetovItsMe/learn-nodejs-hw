@@ -1,22 +1,22 @@
-import { UsersStorage } from "../database";
-import { User } from "../interfaces/user";
+import { UsersStorage } from '../database';
+import { User } from '../interfaces/user';
 
 class UsersController {
-    private usersStore: UsersStorage
+    usersStore: UsersStorage
 
     constructor() {
         this.usersStore = new UsersStorage();
     }
 
-    public getUsers(): User[] {
+    getUsers(): User[] {
         return this.usersStore.Users;
     }
 
-    public getUser(id: string): User {
+    getUser(id: string): User {
         return this.usersStore.Users.find((user: User) => user.id === id);
     }
 
-    public updateUser(user: User): User[] {
+    updateUser(user: User): User[] {
         const users: User[] = this.usersStore.Users;
         const oldUserIndex: number = users.findIndex((oldUserFromArray: User) => oldUserFromArray.id === user.id);
         const newUser: User = user;
@@ -25,7 +25,7 @@ class UsersController {
         return this.usersStore.Users;
     }
 
-    public deleteUser(id: string): User[] {
+    deleteUser(id: string): User[] {
         const users: User[] = this.usersStore.Users;
         const oldUserIndex: number = users.findIndex((userFromArray: User) => userFromArray.id === id);
         users[oldUserIndex] = { ...users[oldUserIndex], isDeleted: true };
@@ -33,7 +33,7 @@ class UsersController {
         return this.usersStore.Users;
     }
 
-    public addUser(user: User): User[] {
+    addUser(user: User): User[] {
         const users: User[] = this.usersStore.Users;
         users.push(user);
         this.usersStore.Users = users;

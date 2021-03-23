@@ -200,7 +200,10 @@
             2,
             "never"
         ],
-        "eol-last": 2,
+        "eol-last": [
+            "error",
+            "always"
+        ],
         "func-names": 1,
         "func-style": [
             2,
@@ -223,8 +226,7 @@
             4,
             {
                 "ignoreUrls": true,
-                "ignoreComments": false,
-                "ignorePattern": "^\\s*(const|let|var)\\s+\\w+\\s+\\=\\s+\\/.*\\/(|i|g|m|ig|im|gm|igm);?$"
+                "ignoreComments": false
             }
         ],
         "max-nested-callbacks": [
