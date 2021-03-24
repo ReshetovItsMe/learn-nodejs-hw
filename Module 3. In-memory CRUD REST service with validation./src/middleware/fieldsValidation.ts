@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from 'express';
 import * as Joi from 'joi';
-import { User } from '../interfaces/user';
+import { User } from '../types/user';
 
 const schema: Joi.ObjectSchema<User> = Joi.object<User>({
     login: Joi.string()

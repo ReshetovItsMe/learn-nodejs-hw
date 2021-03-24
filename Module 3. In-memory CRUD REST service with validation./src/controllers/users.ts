@@ -1,5 +1,5 @@
 import { UsersStorage } from '../database';
-import { User } from '../interfaces/user';
+import { User } from '../types/user';
 
 class UsersController {
     usersStore: UsersStorage

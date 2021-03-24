@@ -1,4 +1,4 @@
-import { User } from '../interfaces/user';
+import { User } from '../types/user';
 
 class UsersStorage {
     users: User[];

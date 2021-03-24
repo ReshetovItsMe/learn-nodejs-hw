@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { User } from '../interfaces/user';
+import { User } from '../types/user';
 import { UsersSevice } from '../services';
 import fieldsValidation from '../middleware/fieldsValidation';
 

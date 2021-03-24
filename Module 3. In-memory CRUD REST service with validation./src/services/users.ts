@@ -1,5 +1,5 @@
 import { UsersController } from '../controllers';
-import { User } from '../interfaces/user';
+import { User } from '../types/user';
 
 class UsersSevice {
     usersControl: UsersController;
