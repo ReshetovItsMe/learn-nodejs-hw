@@ -1,3 +1,1 @@
-import UsersStorage from './users';
-
-export { UsersStorage };
+export { default as UsersStorage } from './users';

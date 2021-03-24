@@ -35,4 +35,4 @@ class UsersSevice {
     }
 }
 
-export default UsersSevice;
+export const userService = new UsersSevice();

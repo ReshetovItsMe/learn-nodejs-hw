@@ -1,3 +1,1 @@
-import UsersSevice from './users';
-
-export { UsersSevice };
+export { userService } from './users';

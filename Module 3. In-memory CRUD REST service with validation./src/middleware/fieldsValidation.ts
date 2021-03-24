@@ -31,5 +31,6 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     } catch (err) {
         console.log(typeof err);
         res.status(400).send('Bad data. Please check your request.');
+        return;
     }
 };

@@ -1,3 +1,1 @@
-import UsersController from './users';
-
-export { UsersController };
+export { default as UsersController } from './users';
