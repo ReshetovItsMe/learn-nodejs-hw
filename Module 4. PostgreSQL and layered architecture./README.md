@@ -1,5 +1,9 @@
 # PostgreSQL and layered architecture
 
+## PREREQUISITES:
+
+The task is a continuation of [Module 3. In-memory CRUD REST service with validation](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module%203.%20In-memory%20CRUD%20REST%20service%20with%20validation.).
+
 ## Task 1
 
 * Install DB PostgreSQL on your machine or use a free web hosting services for PostgreSQL (<https://www.heroku.com/postgresor> <https://www.elephantsql.com/plans.html>).
