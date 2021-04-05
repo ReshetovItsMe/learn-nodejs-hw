@@ -11,7 +11,7 @@ The course consists of the following modules:
     3. [Task 3. Babel](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module%202.%20Basics.%20Node.js%20fundamental%20theory./task3).
 3. [In-memory CRUD REST service with validation](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module%203.%20In-memory%20CRUD%20REST%20service%20with%20validation.).
 4. [PostgreSQL and layered architecture](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module%204.%20PostgreSQL%20and%20layered%20architecture.).
-5. Second entity and many-to-many relationships.
+5. [Second entity and many-to-many relationships](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module%205.%20Second%20entity%20and%20many-to-many%20relationships.).
 6. Loggining and error handling.
 7. JWT authorization and CORS.
 8. Unit tests and config.
