@@ -1,5 +1,5 @@
 import { UsersController } from '../controllers';
-import { User } from '../types/user';
+import { IUser } from '../types/user';
 
 class UsersSevice {
     usersControl: UsersController;
@@ -8,29 +8,29 @@ class UsersSevice {
         this.usersControl = new UsersController();
     }
 
-    getUser(id: string): User {
+    getUser(id: string): Promise<IUser> {
         return this.usersControl.getUser(id);
     }
 
-    getAllUsers(): User[] {
+    getAllUsers(): Promise<IUser[]> {
         return this.usersControl.getUsers();
     }
 
-    updateUser(user: User) {
+    updateUser(user: IUser): Promise<IUser[]> {
         return this.usersControl.updateUser(user);
     }
 
-    createUser(user: User) {
+    createUser(user: IUser): Promise<IUser> {
         return this.usersControl.addUser(user);
     }
 
-    deleteUser(id: string): User[] {
+    deleteUser(id: string): Promise<IUser[]> {
         return this.usersControl.deleteUser(id);
     }
 
-    getAutoSuggestUsers(loginSubstring: string, limit: number): User[] {
-        const users: User[] = this.usersControl.getUsers()
-            .filter((user: User) => user.login.includes(loginSubstring)).sort();
+    async getAutoSuggestUsers(loginSubstring: string, limit: number): Promise<IUser[]> {
+        const users: IUser[] = (await this.usersControl.getUsers())
+            .filter((user: IUser) => user.login.includes(loginSubstring)).sort();
         return users.slice(0, limit);
     }
 }

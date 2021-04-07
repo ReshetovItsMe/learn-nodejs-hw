@@ -1,8 +1,8 @@
 import { Response, Request, NextFunction } from 'express';
 import * as Joi from 'joi';
-import { User } from '../types/user';
+import { IUser } from '../types/user';
 
-const schema: Joi.ObjectSchema<User> = Joi.object<User>({
+const schema: Joi.ObjectSchema<IUser> = Joi.object<IUser>({
     login: Joi.string()
         .alphanum()
         .min(3)
@@ -25,7 +25,7 @@ const schema: Joi.ObjectSchema<User> = Joi.object<User>({
 
 export default async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const user: User = req.body;
+        const user: IUser = req.body;
         await schema.validateAsync(user);
         return next();
     } catch (err) {

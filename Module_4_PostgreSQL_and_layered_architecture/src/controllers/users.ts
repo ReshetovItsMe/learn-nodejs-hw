@@ -1,43 +1,51 @@
-import { UsersStorage } from '../database';
-import { User } from '../types/user';
+import db from '../data-access';
+import { IUser } from '../types/user';
 
 class UsersController {
-    usersStore: UsersStorage
 
-    constructor() {
-        this.usersStore = new UsersStorage();
+    async getUsers(): Promise<IUser[]> {
+        try {
+            const users: IUser[] = await db.User.findAll();
+            return users;
+        } catch (e) {
+            throw new Error('Database access error');
+        }
     }
 
-    getUsers(): User[] {
-        return this.usersStore.Users;
+    async getUser(id: string): Promise<IUser> {
+        try {
+            const user: IUser = await db.User.findByPk(id);
+            return user;
+        } catch (e) {
+            throw new Error('Database access error');
+        }
     }
 
-    getUser(id: string): User {
-        return this.usersStore.Users.find((user: User) => user.id === id);
+    async updateUser(user: IUser): Promise<IUser[]> {
+        try {
+            const updatedUsersFromDb: [number, IUser[]] = await db.User.update(user, { where: { id: user.id }, returning: true });
+            return updatedUsersFromDb[1];
+        } catch (e) {
+            throw new Error('Database access error');
+        }
     }
 
-    updateUser(user: User): User[] {
-        const users: User[] = this.usersStore.Users;
-        const oldUserIndex: number = users.findIndex((oldUserFromArray: User) => oldUserFromArray.id === user.id);
-        const newUser: User = user;
-        users[oldUserIndex] = newUser;
-        this.usersStore.Users = users;
-        return this.usersStore.Users;
+    async deleteUser(id: string): Promise<IUser[]> {
+        try {
+            const updatedUsersFromDb: [number, IUser[]] = await db.User.update({ isDeleted: true }, { where: { id: id }, returning: true });
+            return updatedUsersFromDb[1];
+        } catch (e) {
+            throw new Error('Database access error');
+        }
     }
 
-    deleteUser(id: string): User[] {
-        const users: User[] = this.usersStore.Users;
-        const oldUserIndex: number = users.findIndex((userFromArray: User) => userFromArray.id === id);
-        users[oldUserIndex] = { ...users[oldUserIndex], isDeleted: true };
-        this.usersStore.Users = users;
-        return this.usersStore.Users;
-    }
-
-    addUser(user: User): User[] {
-        const users: User[] = this.usersStore.Users;
-        users.push(user);
-        this.usersStore.Users = users;
-        return this.usersStore.Users;
+    async addUser(user: IUser): Promise<IUser> {
+        try {
+            const newUser: IUser = await db.User.create(user);
+            return newUser;
+        } catch (e) {
+            throw new Error('Database access error');
+        }
     }
 }
 
