@@ -1,6 +1,6 @@
 # PostgreSQL and layered architecture
 
-## PREREQUISITES:
+## PREREQUISITES
 
 The task is a continuation of [Module 3. In-memory CRUD REST service with validation](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module%203.%20In-memory%20CRUD%20REST%20service%20with%20validation.).
 
