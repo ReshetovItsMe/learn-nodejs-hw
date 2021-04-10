@@ -1,7 +1,14 @@
-import { Model, DataTypes, Sequelize } from "sequelize";
-import { IUser } from "../types/user";
+import { Model, DataTypes, Sequelize } from 'sequelize';
 
-interface UserInstance extends Model<IUser>, IUser { }
+export type User = {
+    id: string;
+    login: string;
+    password: string;
+    age: number;
+    isDeleted: boolean;
+}
+
+interface UserInstance extends Model<User>, User { }
 
 const User = (sequelize: Sequelize) => {
     const user = sequelize.define<UserInstance>("User", {

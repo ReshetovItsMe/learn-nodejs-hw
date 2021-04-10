@@ -1,8 +1,8 @@
 import { Response, Request, NextFunction } from 'express';
 import * as Joi from 'joi';
-import { IUser } from '../types/user';
+import { User } from '../models/user';
 
-const schema: Joi.ObjectSchema<IUser> = Joi.object<IUser>({
+const schema: Joi.ObjectSchema<User> = Joi.object<User>({
     login: Joi.string()
         .alphanum()
         .min(3)
@@ -25,11 +25,11 @@ const schema: Joi.ObjectSchema<IUser> = Joi.object<IUser>({
 
 export default async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const user: IUser = req.body;
+        const user: User = req.body;
         await schema.validateAsync(user);
         return next();
     } catch (err) {
-        console.log(typeof err);
+        console.error(err);
         res.status(400).send('Bad data. Please check your request.');
         return;
     }

@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize';
+import Group from '../models/group';
 import User from '../models/user';
 
 const sequelize = new Sequelize(
@@ -13,7 +14,8 @@ const sequelize = new Sequelize(
 
 const db = {
     sequelize,
-    User: User(sequelize)
+    User: User(sequelize),
+    Group: Group(sequelize)
 };
 
 Object.keys(db).forEach(modelName => {

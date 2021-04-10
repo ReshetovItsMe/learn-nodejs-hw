@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { usersRouter } from './routes';
+import { groupsRouter, usersRouter } from './routes';
 import db from './data-access';
 import errorHandling from './middleware/errorHandling';
 
@@ -28,6 +28,7 @@ const port = 4001;
 
 app.use(express.json());
 app.use('/users', usersRouter);
+app.use('/groups', groupsRouter);
 app.use(errorHandling);
 
 

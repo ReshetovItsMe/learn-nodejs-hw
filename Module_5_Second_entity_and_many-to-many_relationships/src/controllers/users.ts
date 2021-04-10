@@ -1,47 +1,47 @@
 import db from '../data-access';
-import { IUser } from '../types/user';
+import { User } from '../models/user';
 
 class UsersController {
 
-    async getUsers(): Promise<IUser[]> {
+    async getUsers(): Promise<User[]> {
         try {
-            const users: IUser[] = await db.User.findAll();
+            const users: User[] = await db.User.findAll();
             return users;
         } catch (e) {
             throw new Error('Database access error');
         }
     }
 
-    async getUser(id: string): Promise<IUser> {
+    async getUser(id: string): Promise<User> {
         try {
-            const user: IUser = await db.User.findByPk(id);
+            const user: User = await db.User.findByPk(id);
             return user;
         } catch (e) {
             throw new Error('Database access error');
         }
     }
 
-    async updateUser(user: IUser): Promise<IUser[]> {
+    async updateUser(user: User): Promise<User[]> {
         try {
-            const updatedUsersFromDb: [number, IUser[]] = await db.User.update(user, { where: { id: user.id }, returning: true });
+            const updatedUsersFromDb: [number, User[]] = await db.User.update(user, { where: { id: user.id }, returning: true });
             return updatedUsersFromDb[1];
         } catch (e) {
             throw new Error('Database access error');
         }
     }
 
-    async deleteUser(id: string): Promise<IUser[]> {
+    async deleteUser(id: string): Promise<User[]> {
         try {
-            const updatedUsersFromDb: [number, IUser[]] = await db.User.update({ isDeleted: true }, { where: { id: id }, returning: true });
+            const updatedUsersFromDb: [number, User[]] = await db.User.update({ isDeleted: true }, { where: { id: id }, returning: true });
             return updatedUsersFromDb[1];
         } catch (e) {
             throw new Error('Database access error');
         }
     }
 
-    async addUser(user: IUser): Promise<IUser> {
+    async addUser(user: User): Promise<User> {
         try {
-            const newUser: IUser = await db.User.create(user);
+            const newUser: User = await db.User.create(user);
             return newUser;
         } catch (e) {
             throw new Error('Database access error');
