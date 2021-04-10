@@ -1,0 +1,48 @@
+{
+  "name": "learn-nodejs-hw-module2",
+  "version": "1.0.0",
+  "description": "This is project for home tasks which were made in EPAM NodeJS course",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon -r dotenv/config -e ts -w ./src src/app.ts",
+    "lint": "eslint src --ext .ts,.tsx src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReshetovItsMe/learn-nodejs-hw.git"
+  },
+  "keywords": [
+    "learn",
+    "education",
+    "nodejs",
+    "express",
+    "typescript"
+  ],
+  "author": "Vladislav Reshetov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ReshetovItsMe/learn-nodejs-hw/issues"
+  },
+  "homepage": "https://github.com/ReshetovItsMe/learn-nodejs-hw#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/joi": "^17.2.3",
+    "@types/node": "^14.14.35",
+    "@types/validator": "^13.1.3",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.22.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
