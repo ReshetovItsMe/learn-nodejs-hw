@@ -1,8 +1,8 @@
 import { Response, Request, NextFunction } from 'express';
 import * as Joi from 'joi';
-import { Group } from '../models/group';
+import { IGroup } from '../models/group';
 
-const schema: Joi.ObjectSchema<Group> = Joi.object<Group>({
+const schema: Joi.ObjectSchema<IGroup> = Joi.object<IGroup>({
     name: Joi.string()
         .regex(/^[a-zA-Z\s]*$/)
         .min(3)
@@ -16,7 +16,7 @@ const schema: Joi.ObjectSchema<Group> = Joi.object<Group>({
 
 export default async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const group: Group = req.body;
+        const group: IGroup = req.body;
         await schema.validateAsync(group);
         return next();
     } catch (err) {

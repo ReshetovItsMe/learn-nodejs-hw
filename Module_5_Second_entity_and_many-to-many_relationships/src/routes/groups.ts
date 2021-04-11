@@ -1,14 +1,14 @@
 import * as express from 'express';
 import { groupsService } from '../services';
 import fieldsValidation from '../middleware/groupFieldsValidation';
-import { Group } from '../models/group';
+import { IGroup } from '../models/group';
 
 const router = express.Router();
 
 router.get('/byId', async (req, res, next) => {
     const groupId: string = req.query.id.toString();
     if (!!groupId) {
-        const group: void | Group = await groupsService.getGroup(groupId).catch(next);
+        const group: void | IGroup = await groupsService.getGroup(groupId).catch(next);
         if (!!group) {
             res.json(group);
             return;
@@ -20,20 +20,20 @@ router.get('/byId', async (req, res, next) => {
 });
 
 router.get('/', async (req, res, next) => {
-    const groups: void | Group[] = await groupsService.getGroups().catch(next);
+    const groups: void | IGroup[] = await groupsService.getGroups().catch(next);
     res.json(groups);
 });
 
 router.post('/addGroup', fieldsValidation, async (req, res, next) => {
-    const group: Group = req.body;
-    const newGroup: void | Group = await groupsService.createGroup(group).catch(next);
+    const group: IGroup = req.body;
+    const newGroup: void | IGroup = await groupsService.createGroup(group).catch(next);
     res.status(201).send(newGroup);
     return;
 });
 
 router.put('/updateGroup', fieldsValidation, async (req, res, next) => {
-    const group: Group = req.body;
-    const groups: void | Group[] = await groupsService.updateGroup(group).catch(next);
+    const group: IGroup = req.body;
+    const groups: void | IGroup[] = await groupsService.updateGroup(group).catch(next);
     res.status(201).send(groups);
     return;
 });
@@ -41,7 +41,7 @@ router.put('/updateGroup', fieldsValidation, async (req, res, next) => {
 router.delete('/byId', async (req, res, next) => {
     const groupId: string = req.query.id.toString();
     if (!!groupId) {
-        const groups: void | Group[] = await groupsService.deleteGroup(groupId).catch(next);
+        const groups: void | IGroup[] = await groupsService.deleteGroup(groupId).catch(next);
         res.status(201).send(groups);
         return;
     }

@@ -1,14 +1,15 @@
 import * as express from 'express';
 import { usersService } from '../services';
 import fieldsValidation from '../middleware/userFieldsValidation';
-import { User } from '../models/user';
+import { IUser } from '../models/user';
+import { IUserGroup } from '../models/userGroup';
 
 const router = express.Router();
 
 router.get('/byId', async (req, res, next) => {
     const userId: string = req.query.id.toString();
     if (!!userId) {
-        const user: void | User = await usersService.getUser(userId).catch(next);
+        const user: void | IUser = await usersService.getUser(userId).catch(next);
         if (!!user) {
             res.json(user);
             return;
@@ -20,7 +21,7 @@ router.get('/byId', async (req, res, next) => {
 });
 
 router.get('/', async (req, res, next) => {
-    const users: void | User[] = await usersService.getAllUsers().catch(next);
+    const users: void | IUser[] = await usersService.getAllUsers().catch(next);
     res.json(users);
 });
 
@@ -28,7 +29,7 @@ router.get('/autoSuggest', async (req, res, next) => {
     if (!!req.query.loginSubstring && !!req.query.limit) {
         const loginSubstring: string = req.query.loginSubstring.toString();
         const limit: number = Number.parseInt(req.query.limit.toString(), 10);
-        const users: void | User[] = await usersService.getAutoSuggestUsers(loginSubstring, limit).catch(next);
+        const users: void | IUser[] = await usersService.getAutoSuggestUsers(loginSubstring, limit).catch(next);
         res.json(users);
         return;
     }
@@ -36,23 +37,30 @@ router.get('/autoSuggest', async (req, res, next) => {
 });
 
 router.post('/addUser', fieldsValidation, async (req, res, next) => {
-    const user: User = req.body;
-    const newUser: void | User = await usersService.createUser(user).catch(next);
+    const user: IUser = req.body;
+    const newUser: void | IUser = await usersService.createUser(user).catch(next);
     res.status(201).send(newUser);
     return;
 });
 
 router.put('/updateUser', fieldsValidation, async (req, res, next) => {
-    const user: User = req.body;
-    const users: void | User[] = await usersService.updateUser(user).catch(next);
+    const user: IUser = req.body;
+    const users: void | IUser[] = await usersService.updateUser(user).catch(next);
     res.status(201).send(users);
+    return;
+});
+
+router.post('/addUsersToGroup', async (req, res, next) => {
+    const usersGroup: { userIds: string[], groupId: string } = req.body;
+    const newUsersGroup: void | IUserGroup[] = await usersService.addUsersToGroup(usersGroup.userIds, usersGroup.groupId).catch(next);
+    res.status(201).send(newUsersGroup);
     return;
 });
 
 router.delete('/byId', async (req, res, next) => {
     const userId: string = req.query.id.toString();
     if (!!userId) {
-        const users: void | User[] = await usersService.deleteUser(userId).catch(next);
+        const users: void | IUser[] = await usersService.deleteUser(userId).catch(next);
         res.status(201).send(users);
         return;
     }

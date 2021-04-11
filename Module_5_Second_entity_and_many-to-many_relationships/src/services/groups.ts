@@ -1,5 +1,5 @@
 import { GroupsController } from '../controllers';
-import { Group } from '../models/group';
+import { IGroup } from '../models/group';
 
 class GroupsSevice {
     groupsControl: GroupsController;
@@ -8,26 +8,25 @@ class GroupsSevice {
         this.groupsControl = new GroupsController();
     }
 
-    getGroups(): Promise<Group[]> {
+    getGroups(): Promise<IGroup[]> {
         return this.groupsControl.getGroups();
     }
 
-    getGroup(id: string): Promise<Group> {
+    getGroup(id: string): Promise<IGroup> {
         return this.groupsControl.getGroup(id);
     }
 
-    updateGroup(group: Group): Promise<Group[]> {
+    updateGroup(group: IGroup): Promise<IGroup[]> {
         return this.groupsControl.updateGroup(group);
     }
 
-    createGroup(group: Group): Promise<Group> {
+    createGroup(group: IGroup): Promise<IGroup> {
         return this.groupsControl.addGroup(group);
     }
 
-    deleteGroup(id: string): Promise<Group[]> {
+    deleteGroup(id: string): Promise<IGroup[]> {
         return this.groupsControl.deleteGroup(id);
     }
-
 }
 
 export const groupsService = new GroupsSevice();
