@@ -1,10 +1,10 @@
-import { Model, DataTypes, Sequelize } from "sequelize";
-import { IUser } from "../types/user";
+import { Model, DataTypes, Sequelize } from 'sequelize';
+import { IUser } from '../types/user';
 
 interface UserInstance extends Model<IUser>, IUser { }
 
 const User = (sequelize: Sequelize) => {
-    const user = sequelize.define<UserInstance>("User", {
+    const user = sequelize.define<UserInstance>('User', {
         id: {
             allowNull: false,
             primaryKey: true,
@@ -32,6 +32,6 @@ const User = (sequelize: Sequelize) => {
         tableName: 'User'
     });
     return user;
-}
+};
 
 export default User;

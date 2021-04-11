@@ -2,7 +2,6 @@ import db from '../data-access';
 import { IUser } from '../types/user';
 
 class UsersController {
-
     async getUsers(): Promise<IUser[]> {
         try {
             const users: IUser[] = await db.User.findAll();
@@ -32,7 +31,7 @@ class UsersController {
 
     async deleteUser(id: string): Promise<IUser[]> {
         try {
-            const updatedUsersFromDb: [number, IUser[]] = await db.User.update({ isDeleted: true }, { where: { id: id }, returning: true });
+            const updatedUsersFromDb: [number, IUser[]] = await db.User.update({ isDeleted: true }, { where: { id }, returning: true });
             return updatedUsersFromDb[1];
         } catch (e) {
             throw new Error('Database access error');

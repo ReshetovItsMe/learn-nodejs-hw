@@ -4,7 +4,7 @@ import db from './data-access';
 import errorHandling from './middleware/errorHandling';
 
 const assertDatabaseConnectionOk = async () => {
-    console.log(`Checking database connection...`);
+    console.log('Checking database connection...');
     try {
         await db.sequelize.sync();
         console.log('Database connection OK!');
@@ -13,14 +13,14 @@ const assertDatabaseConnectionOk = async () => {
         console.log(error.message);
         process.exit(1);
     }
-}
+};
 
 const init = async () => {
     await assertDatabaseConnectionOk();
     app.listen(port, () => {
         console.log(`App is listening on port ${port}`);
     });
-}
+};
 
 
 const app = express();
