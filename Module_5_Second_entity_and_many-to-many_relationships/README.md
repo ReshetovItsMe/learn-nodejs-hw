@@ -2,7 +2,7 @@
 
 ## PREREQUISITES
 
-The task is a continuation of [Module 4. PostgreSQL and layered architecture](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module%204.%20PostgreSQL%20and%20layered%20architecture.).
+The task is a continuation of [Module 4. PostgreSQL and layered architecture](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_4_PostgreSQL_and_layered_architecture).
 
 ## Task 1
 
@@ -38,4 +38,4 @@ Link User records in one table with Group records in another table.
 
 ## Task 3
 
-Add addUsersToGroup(groupId, userIds)method which will allow adding users to a certain group. Use transactions to save records in DB.
+Add addUsersToGroup(groupId, userIds) method which will allow adding users to a certain group. Use transactions to save records in DB.
