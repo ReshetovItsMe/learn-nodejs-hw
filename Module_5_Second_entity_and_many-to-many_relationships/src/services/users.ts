@@ -1,5 +1,6 @@
 import { UsersController } from '../controllers';
-import { IUser } from '../types/user';
+import { IUser } from '../models/user';
+import { IUserGroup } from '../models/userGroup';
 
 class UsersSevice {
     usersControl: UsersController;
@@ -28,6 +29,10 @@ class UsersSevice {
         return this.usersControl.deleteUser(id);
     }
 
+    addUsersToGroup(userIds: string[], groupId: string): Promise<IUserGroup[]> {
+        return this.usersControl.addUsersToGroup(userIds, groupId);
+    }
+
     async getAutoSuggestUsers(loginSubstring: string, limit: number): Promise<IUser[]> {
         const users: IUser[] = (await this.usersControl.getUsers())
             .filter((user: IUser) => user.login.includes(loginSubstring)).sort();
@@ -35,4 +40,4 @@ class UsersSevice {
     }
 }
 
-export const userService = new UsersSevice();
+export const usersService = new UsersSevice();

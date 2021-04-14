@@ -1,8 +1,8 @@
 import db from '../data-access';
-import { IUser } from '../types/user';
+import { IUser } from '../models/user';
+import { IUserGroup } from '../models/userGroup';
 
 class UsersController {
-
     async getUsers(): Promise<IUser[]> {
         try {
             const users: IUser[] = await db.User.findAll();
@@ -32,7 +32,7 @@ class UsersController {
 
     async deleteUser(id: string): Promise<IUser[]> {
         try {
-            const updatedUsersFromDb: [number, IUser[]] = await db.User.update({ isDeleted: true }, { where: { id: id }, returning: true });
+            const updatedUsersFromDb: [number, IUser[]] = await db.User.update({ isDeleted: true }, { where: { id }, returning: true });
             return updatedUsersFromDb[1];
         } catch (e) {
             throw new Error('Database access error');
@@ -43,6 +43,18 @@ class UsersController {
         try {
             const newUser: IUser = await db.User.create(user);
             return newUser;
+        } catch (e) {
+            console.error(e);
+            throw new Error('Database access error');
+        }
+    }
+
+    async addUsersToGroup(userIds: string[], groupId: string): Promise<IUserGroup[]> {
+        try {
+            const newUsersGroup: IUserGroup[] = await db.UserGroup.bulkCreate(userIds.map((userId: string) => ({
+                userId, groupId
+            })));
+            return newUsersGroup;
         } catch (e) {
             throw new Error('Database access error');
         }
