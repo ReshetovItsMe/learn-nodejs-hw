@@ -4,6 +4,7 @@ import db from './data-access';
 import errorHandling from './middleware/errorHandling';
 import methodsLogger from './middleware/methodsLogger';
 import logger from './config/logger';
+import * as responseTime from 'response-time';
 
 const assertDatabaseConnectionOk = async () => {
     console.log('Checking database connection...');
@@ -39,6 +40,9 @@ process
 const app = express();
 const port = 4001;
 
+app.use(responseTime((req, res, time) => {
+    logger.info(`Method ${req.method} ${req.url} is finished in ${time}ms`);
+}));
 app.use(express.json());
 app.use(methodsLogger);
 app.use('/users', usersRouter);
