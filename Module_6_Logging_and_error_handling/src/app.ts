@@ -3,6 +3,7 @@ import { groupsRouter, usersRouter } from './routes';
 import db from './data-access';
 import errorHandling from './middleware/errorHandling';
 import methodsLogger from './middleware/methodsLogger';
+import logger from './config/logger';
 
 const assertDatabaseConnectionOk = async () => {
     console.log('Checking database connection...');
@@ -22,6 +23,17 @@ const init = async () => {
         console.log(`App is listening on port ${port}`);
     });
 };
+
+process
+    .on('unhandledRejection', (reason) => {
+        logger.error('Unhandled Rejection at Promise:');
+        logger.error(reason);
+    })
+    .on('uncaughtException', (err: Error) => {
+        logger.error('Uncaught Exception thrown:');
+        logger.error(err);
+        process.exit(1);
+    });
 
 
 const app = express();
