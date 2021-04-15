@@ -2,6 +2,7 @@ import * as express from 'express';
 import { groupsRouter, usersRouter } from './routes';
 import db from './data-access';
 import errorHandling from './middleware/errorHandling';
+import methodsLogger from './middleware/methodsLogger';
 
 const assertDatabaseConnectionOk = async () => {
     console.log('Checking database connection...');
@@ -27,6 +28,7 @@ const app = express();
 const port = 4001;
 
 app.use(express.json());
+app.use(methodsLogger);
 app.use('/users', usersRouter);
 app.use('/groups', groupsRouter);
 app.use(errorHandling);
