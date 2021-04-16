@@ -12,10 +12,9 @@ The course consists of the following modules:
 3. [In-memory CRUD REST service with validation](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_3_In-memory_CRUD_REST_service_with_validation).
 4. [PostgreSQL and layered architecture](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_4_PostgreSQL_and_layered_architecture).
 5. [Second entity and many-to-many relationships](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_5_Second_entity_and_many-to-many_relationships).
-6. Loggining and error handling.
+6. [Loggining and error handling](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_6_Logging_and_error_handling).
 7. JWT authorization and CORS.
 8. Unit tests and config.
-9. Serverless Architecture with AWS.
-10. Dockerization.
 
+**NOTE:** If you want to see completed pet project, just open the last module. It contains all modules. 
 Each task in module has README.md with **prerequisites**.
