@@ -31,6 +31,7 @@ process
         logger.error(reason);
     })
     .on('uncaughtException', (err: Error) => {
+        db.sequelize.close();
         logger.error('Uncaught Exception thrown:');
         logger.error(err);
         process.exit(1);
