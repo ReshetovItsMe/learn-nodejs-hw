@@ -16,5 +16,6 @@ The course consists of the following modules:
 7. JWT authorization and CORS.
 8. Unit tests and config.
 
-**NOTE:** If you want to see completed pet project, just open the last module. It contains all modules. 
-Each task in module has README.md with **prerequisites**.
+Each task in module has README.md with **prerequisites**.    
+## NOTE
+If you want to see completed pet project, just open the last module. It contains all modules.      
