@@ -1,3 +1,4 @@
+import logger from '../config/logger';
 import db from '../data-access';
 import { IGroup } from '../models/group';
 
@@ -7,7 +8,8 @@ class GroupsController {
             const groups: IGroup[] = await db.Group.findAll();
             return groups;
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error('Method GroupsController.getGroups with no arguments');
+            logger.error(e);
         }
     }
 
@@ -16,16 +18,18 @@ class GroupsController {
             const group: IGroup = await db.Group.findByPk(id);
             return group;
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error(`Method GroupsController.getGroup with id=${id}`);
+            logger.error(e);
         }
     }
 
-    async updateGroup(user: IGroup): Promise<IGroup[]> {
+    async updateGroup(group: IGroup): Promise<IGroup[]> {
         try {
-            const updatedGroupsFromDb: [number, IGroup[]] = await db.Group.update(user, { where: { id: user.id }, returning: true });
+            const updatedGroupsFromDb: [number, IGroup[]] = await db.Group.update(group, { where: { id: group.id }, returning: true });
             return updatedGroupsFromDb[1];
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error(`Method GroupsController.updateGroup with user=${JSON.stringify(group)}`);
+            logger.error(e);
         }
     }
 
@@ -35,16 +39,18 @@ class GroupsController {
             const groups: IGroup[] = await db.Group.findAll();
             return groups;
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error(`Method GroupsController.deleteGroup with id=${id}`);
+            logger.error(e);
         }
     }
 
-    async addGroup(user: IGroup): Promise<IGroup> {
+    async addGroup(group: IGroup): Promise<IGroup> {
         try {
-            const newGroup: IGroup = await db.Group.create(user);
+            const newGroup: IGroup = await db.Group.create(group);
             return newGroup;
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error(`Method GroupsController.addGroup with user=${JSON.stringify(group)}`);
+            logger.error(e);
         }
     }
 }

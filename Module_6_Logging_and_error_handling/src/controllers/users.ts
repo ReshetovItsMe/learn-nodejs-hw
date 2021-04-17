@@ -1,3 +1,4 @@
+import logger from '../config/logger';
 import db from '../data-access';
 import { IUser } from '../models/user';
 import { IUserGroup } from '../models/userGroup';
@@ -8,7 +9,8 @@ class UsersController {
             const users: IUser[] = await db.User.findAll();
             return users;
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error('Method UsersController.getUsers');
+            logger.error(e);
         }
     }
 
@@ -17,7 +19,8 @@ class UsersController {
             const user: IUser = await db.User.findByPk(id);
             return user;
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error(`Method UsersController.getUser with id=${id}`);
+            logger.error(e);
         }
     }
 
@@ -26,7 +29,8 @@ class UsersController {
             const updatedUsersFromDb: [number, IUser[]] = await db.User.update(user, { where: { id: user.id }, returning: true });
             return updatedUsersFromDb[1];
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error(`Method UsersController.updateUser with user=${JSON.stringify(user)}`);
+            logger.error(e);
         }
     }
 
@@ -35,7 +39,8 @@ class UsersController {
             const updatedUsersFromDb: [number, IUser[]] = await db.User.update({ isDeleted: true }, { where: { id }, returning: true });
             return updatedUsersFromDb[1];
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error(`Method UsersController.deleteUser with id=${id}`);
+            logger.error(e);
         }
     }
 
@@ -44,8 +49,8 @@ class UsersController {
             const newUser: IUser = await db.User.create(user);
             return newUser;
         } catch (e) {
-            console.error(e);
-            throw new Error('Database access error');
+            logger.error(`Method UsersController.addUser with user=${JSON.stringify(user)}`);
+            logger.error(e);
         }
     }
 
@@ -56,7 +61,8 @@ class UsersController {
             })));
             return newUsersGroup;
         } catch (e) {
-            throw new Error('Database access error');
+            logger.error(`Method UsersController.addUsersToGroup with userIds=${userIds} and userIds=${groupId}`);
+            logger.error(e);
         }
     }
 }
