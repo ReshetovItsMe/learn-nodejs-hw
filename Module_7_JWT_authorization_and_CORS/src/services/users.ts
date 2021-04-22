@@ -9,8 +9,12 @@ class UsersSevice {
         this.usersControl = new UsersController();
     }
 
-    getUser(id: string): Promise<IUser> {
+    getUser(id: string): Promise<IUser | undefined> {
         return this.usersControl.getUser(id);
+    }
+
+    getUserByLoginAndPassword(login: string, password: string): Promise<IUser | undefined> {
+        return this.usersControl.getUserByLoginAndPassword(login, password);
     }
 
     getAllUsers(): Promise<IUser[]> {

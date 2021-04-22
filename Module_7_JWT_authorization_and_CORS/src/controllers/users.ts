@@ -24,6 +24,18 @@ class UsersController {
         }
     }
 
+    async getUserByLoginAndPassword(login: string, password: string): Promise<IUser> {
+        try {
+            const user: IUser = await db.User.findOne({
+                raw: true, where: { login, password }
+            });
+            return user;
+        } catch (e) {
+            logger.error(`Method UsersController.getUserByLoginAndPassword with login=${login}`);
+            logger.error(e);
+        }
+    }
+
     async updateUser(user: IUser): Promise<IUser[]> {
         try {
             const updatedUsersFromDb: [number, IUser[]] = await db.User.update(user, { where: { id: user.id }, returning: true });
