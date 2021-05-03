@@ -1,13 +1,12 @@
 import * as express from 'express';
-import { groupsRouter, usersRouter } from './routes';
+import * as responseTime from 'response-time';
+import * as cors from 'cors';
+import { groupsRouter, usersRouter, loginRouter } from './routes';
 import db from './data-access';
 import errorHandling from './middleware/errorHandling';
 import methodsLogger from './middleware/methodsLogger';
 import checkToken from './middleware/checkToken';
 import logger from './config/logger';
-import * as responseTime from 'response-time';
-import { login } from './services';
-import * as cors from 'cors';
 
 const assertDatabaseConnectionOk = async () => {
     console.log('Checking database connection...');
@@ -49,21 +48,8 @@ app.use(responseTime((req, res, time) => {
 }));
 app.use(express.json());
 
-app.post('/login', async (req, res, next) => {
-    const userLogin: string = req.body.login;
-    const userPassword: string = req.body.password;
-    const token: string | void = await login(userLogin, userPassword).catch(next);
-    console.log(token);
-
-    if (!!token) {
-        res.status(200).send({ success: true, message: token });
-    } else {
-        res.status(403).send({ success: false, message: 'Bad login/password combination' });
-    }
-});
-
-
 app.use(cors());
+app.use('/login', loginRouter);
 app.use(methodsLogger);
 app.use(checkToken);
 app.use('/users', usersRouter);

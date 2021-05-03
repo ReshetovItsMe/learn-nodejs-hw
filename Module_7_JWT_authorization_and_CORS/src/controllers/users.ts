@@ -24,10 +24,11 @@ class UsersController {
         }
     }
 
-    async getUserByLoginAndPassword(login: string, password: string): Promise<IUser> {
+    async getUserByLogin(login: string): Promise<IUser> {
         try {
             const user: IUser = await db.User.findOne({
-                raw: true, where: { login, password }
+                raw: true,
+                where: { login }
             });
             return user;
         } catch (e) {

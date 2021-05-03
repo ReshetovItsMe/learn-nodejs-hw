@@ -1,3 +1,4 @@
+import { createHashedPassword, checkPassword } from '.';
 import { UsersController } from '../controllers';
 import { IUser } from '../models/user';
 import { IUserGroup } from '../models/userGroup';
@@ -13,20 +14,31 @@ class UsersSevice {
         return this.usersControl.getUser(id);
     }
 
-    getUserByLoginAndPassword(login: string, password: string): Promise<IUser | undefined> {
-        return this.usersControl.getUserByLoginAndPassword(login, password);
+    async getUserByLoginAndPassword(login: string, password: string): Promise<IUser | undefined> {
+        const user: IUser | undefined = await this.usersControl.getUserByLogin(login);
+        const isPasswordsMatched: boolean = await checkPassword(password, user.password);
+        return isPasswordsMatched ?
+            user : null;
     }
 
     getAllUsers(): Promise<IUser[]> {
         return this.usersControl.getUsers();
     }
 
-    updateUser(user: IUser): Promise<IUser[]> {
-        return this.usersControl.updateUser(user);
+    async updateUser(user: IUser): Promise<IUser[]> {
+        const hashedPassword = await createHashedPassword(user.password);
+        return this.usersControl.updateUser({
+            ...user,
+            password: hashedPassword
+        });
     }
 
-    createUser(user: IUser): Promise<IUser> {
-        return this.usersControl.addUser(user);
+    async createUser(user: IUser): Promise<IUser> {
+        const hashedPassword = await createHashedPassword(user.password);
+        return this.usersControl.addUser({
+            ...user,
+            password: hashedPassword
+        });
     }
 
     deleteUser(id: string): Promise<IUser[]> {

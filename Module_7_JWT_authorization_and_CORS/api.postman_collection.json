@@ -12,10 +12,16 @@
 					"name": "add user",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InZsYWQiLCJsb2dpbiI6InZsYWQxIiwicGFzc3dvcmQiOiIkMmIkMTAkbFhIUHdGMUZVdDcxd2VCdk50SjFWZTZWRFF1SVF2eFlxaHBOTFA2OUVyTS9DSHUySVVLRlMiLCJhZ2UiOjIzLCJpc0RlbGV0ZWQiOmZhbHNlLCJjcmVhdGVkQXQiOiIyMDIxLTA1LTAzVDExOjI5OjE1LjE1M1oiLCJ1cGRhdGVkQXQiOiIyMDIxLTA1LTAzVDExOjI5OjE1LjE1M1oiLCJpYXQiOjE2MjAwNDE1MjcsImV4cCI6MTYyMDA0MzMyN30.7XkZts32NSat7lakqPfYNfKEU4JYci_lVk03fgsAyo0",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"test\",\n    \"login\": \"sad3\",\n    \"password\": \"tests2s\",\n    \"age\": 23,\n    \"isDeleted\": false\n}",
+							"raw": "{\n    \"id\": \"vlad12\",\n    \"login\": \"vlad12\",\n    \"password\": \"dsadssadas3211\",\n    \"age\": 23,\n    \"isDeleted\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
