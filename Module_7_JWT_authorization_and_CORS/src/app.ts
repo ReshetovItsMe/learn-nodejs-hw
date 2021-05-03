@@ -1,10 +1,12 @@
 import * as express from 'express';
-import { groupsRouter, usersRouter } from './routes';
+import * as responseTime from 'response-time';
+import * as cors from 'cors';
+import { groupsRouter, usersRouter, loginRouter } from './routes';
 import db from './data-access';
 import errorHandling from './middleware/errorHandling';
 import methodsLogger from './middleware/methodsLogger';
+import checkToken from './middleware/checkToken';
 import logger from './config/logger';
-import * as responseTime from 'response-time';
 
 const assertDatabaseConnectionOk = async () => {
     console.log('Checking database connection...');
@@ -45,14 +47,14 @@ app.use(responseTime((req, res, time) => {
     logger.info(`Method ${req.method} ${req.url} is finished in ${time}ms`);
 }));
 app.use(express.json());
+
+app.use(cors());
+app.use('/login', loginRouter);
 app.use(methodsLogger);
+app.use(checkToken);
 app.use('/users', usersRouter);
 app.use('/groups', groupsRouter);
+
 app.use(errorHandling);
-
-
-app.get('/', (req, res) => {
-    res.send('Hello world');
-});
 
 init();
