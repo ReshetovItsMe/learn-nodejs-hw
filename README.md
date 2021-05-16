@@ -13,8 +13,8 @@ The course consists of the following modules:
 4. [PostgreSQL and layered architecture](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_4_PostgreSQL_and_layered_architecture).
 5. [Second entity and many-to-many relationships](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_5_Second_entity_and_many-to-many_relationships).
 6. [Loggining and error handling](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_6_Logging_and_error_handling).
-7. JWT authorization and CORS.
-8. Unit tests and config.
+7. [JWT authorization and CORS](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_7_JWT_authorization_and_CORS).
+8. [Unit tests and config](https://github.com/ReshetovItsMe/learn-nodejs-hw/tree/main/Module_8_Unit_Tests_and_Config).
 
 Each task in module has README.md with **prerequisites**.
 

@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "8ed82c24-fb31-4d47-a9a4-15d8c974773a",
+		"name": "epam-learn-nodejs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "add user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InZsYWQiLCJsb2dpbiI6InZsYWQxIiwicGFzc3dvcmQiOiIkMmIkMTAkbFhIUHdGMUZVdDcxd2VCdk50SjFWZTZWRFF1SVF2eFlxaHBOTFA2OUVyTS9DSHUySVVLRlMiLCJhZ2UiOjIzLCJpc0RlbGV0ZWQiOmZhbHNlLCJjcmVhdGVkQXQiOiIyMDIxLTA1LTAzVDExOjI5OjE1LjE1M1oiLCJ1cGRhdGVkQXQiOiIyMDIxLTA1LTAzVDExOjI5OjE1LjE1M1oiLCJpYXQiOjE2MjAwNDE1MjcsImV4cCI6MTYyMDA0MzMyN30.7XkZts32NSat7lakqPfYNfKEU4JYci_lVk03fgsAyo0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"vlad12\",\n    \"login\": \"vlad12\",\n    \"password\": \"dsadssadas3211\",\n    \"age\": 23,\n    \"isDeleted\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4001/users/addUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"users",
+								"addUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4001/users/byId?id=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"users",
+								"byId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get auto-suggest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4001/users/autoSuggest?loginSubstring=te&limit=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"users",
+								"autoSuggest"
+							],
+							"query": [
+								{
+									"key": "loginSubstring",
+									"value": "te"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "dsa",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4001/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"test\",\n    \"login\": \"newtest\",\n    \"password\": \"newtest32\",\n    \"age\": 99,\n    \"isDeleted\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4001/users/updateUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"users",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4001/users/byId?id=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"users",
+								"byId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "groups",
+			"item": [
+				{
+					"name": "add group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1g\",\n    \"name\": \"readGroup\",\n    \"permissions\": [\"READ\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4001/groups/addGroup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"groups",
+								"addGroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get group by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4001/groups/byId?id=1g",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"groups",
+								"byId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1g"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4001/groups",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update groups",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1g\",\n    \"name\": \"READ AND WRITE\",\n    \"permissions\": [\"READ\", \"WRITE\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4001/groups/updateGroup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"groups",
+								"updateGroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete group by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4001/groups/byId?id=1g",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"groups",
+								"byId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1g"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "assign user to group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userIds\": [\"test\"],\n    \"groupId\": \"1g\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4001/users/addUsersToGroup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"users",
+						"addUsersToGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authorization",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"sad3\",\n    \"password\": \"tests2s\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4001/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
