@@ -15,4 +15,4 @@ The information on DB connection (connection string) should be stored in .env fi
 
 ## Task *
 
-Add integration tests for getUsers and create User methods with mock sequalize.
+Add integration tests for getUsers and createUser methods with mock sequalize.
