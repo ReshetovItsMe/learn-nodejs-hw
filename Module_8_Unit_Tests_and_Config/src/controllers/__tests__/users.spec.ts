@@ -28,6 +28,11 @@ export const usersControllerTest = () => describe('Test UsersController', () => 
         return await db.sequelize.dropSchema('scm', { logging: false });
     });
 
+    test('Schema should be created', async () => {
+        const numberOfSchemas: number = (await db.sequelize.showAllSchemas({ logging: false })).length;
+        expect(numberOfSchemas).toEqual(1);
+    });
+
     test('Should add user to database', async () => {
         const newUser = await usersControl.addUser(testUser);
         expect(newUser).toMatchObject(testUser);
@@ -67,5 +72,12 @@ export const usersControllerTest = () => describe('Test UsersController', () => 
         const deletedUser = usersFromDb.find((dbUser) => dbUser.id === testUser.id);
         expect(deletedUser.isDeleted).toEqual(true);
     });
-});
 
+    test('Should throw error if delete non-existent user', async () => {
+        const usersFromDb = await usersControl.deleteUser('test-non-existent');
+        console.log('test log');
+        console.log(usersFromDb);
+        const deletedUser = usersFromDb.find((dbUser) => dbUser.id === testUser.id);
+        expect(deletedUser.isDeleted).toEqual(true);
+    });
+});

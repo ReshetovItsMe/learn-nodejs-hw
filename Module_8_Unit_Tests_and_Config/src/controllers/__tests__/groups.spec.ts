@@ -19,6 +19,11 @@ export const groupsControllerTest = () => describe('Test GroupsController', () =
         return await db.sequelize.dropSchema('scm', { logging: false });
     });
 
+    test('Schema should be created', async () => {
+        const numberOfSchemas: number = (await db.sequelize.showAllSchemas({ logging: false })).length;
+        expect(numberOfSchemas).toEqual(1);
+    });
+
     test('Should add group to database', async () => {
         const newGroup = await groupsController.addGroup(testGroup);
         expect(newGroup).toMatchObject(testGroup);

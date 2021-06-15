@@ -8,5 +8,9 @@ module.exports = {
     moduleFileExtensions: ['ts', 'js', 'json', 'node'],
     collectCoverage: true,
     clearMocks: true,
-    coverageDirectory: 'coverage'
+    coverageDirectory: 'coverage',
+    testEnvironment: 'node',
+    coveragePathIgnorePatterns: [
+        '/node_modules/'
+    ]
 };
