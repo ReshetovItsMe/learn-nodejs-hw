@@ -5,7 +5,6 @@ import { groupsRouter, usersRouter, loginRouter } from './routes';
 import db from './data-access';
 import errorHandling from './middleware/errorHandling';
 import methodsLogger from './middleware/methodsLogger';
-import checkToken from './middleware/checkToken';
 import logger from './config/logger';
 
 const assertDatabaseConnectionOk = async () => {
@@ -51,7 +50,6 @@ app.use(express.json());
 app.use(cors());
 app.use('/login', loginRouter);
 app.use(methodsLogger);
-app.use(checkToken);
 app.use('/users', usersRouter);
 app.use('/groups', groupsRouter);
 

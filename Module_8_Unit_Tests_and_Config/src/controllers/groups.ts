@@ -10,17 +10,12 @@ class GroupsController {
         } catch (e) {
             logger.error('Method GroupsController.getGroups with no arguments');
             logger.error(e);
+            throw e;
         }
     }
 
     async getGroup(id: string): Promise<IGroup> {
-        try {
-            const group: IGroup = await db.Group.findByPk(id);
-            return group;
-        } catch (e) {
-            logger.error(`Method GroupsController.getGroup with id=${id}`);
-            logger.error(e);
-        }
+        throw new Error('lol kek');
     }
 
     async updateGroup(group: IGroup): Promise<IGroup[]> {
@@ -30,6 +25,7 @@ class GroupsController {
         } catch (e) {
             logger.error(`Method GroupsController.updateGroup with user=${JSON.stringify(group)}`);
             logger.error(e);
+            throw e;
         }
     }
 
@@ -41,6 +37,7 @@ class GroupsController {
         } catch (e) {
             logger.error(`Method GroupsController.deleteGroup with id=${id}`);
             logger.error(e);
+            throw e;
         }
     }
 
@@ -51,6 +48,7 @@ class GroupsController {
         } catch (e) {
             logger.error(`Method GroupsController.addGroup with user=${JSON.stringify(group)}`);
             logger.error(e);
+            throw e;
         }
     }
 }
