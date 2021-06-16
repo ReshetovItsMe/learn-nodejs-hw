@@ -11,6 +11,7 @@ class UsersController {
         } catch (e) {
             logger.error('Method UsersController.getUsers');
             logger.error(e);
+            throw e;
         }
     }
 
@@ -21,6 +22,7 @@ class UsersController {
         } catch (e) {
             logger.error(`Method UsersController.getUser with id=${id}`);
             logger.error(e);
+            throw e;
         }
     }
 
@@ -34,6 +36,7 @@ class UsersController {
         } catch (e) {
             logger.error(`Method UsersController.getUserByLoginAndPassword with login=${login}`);
             logger.error(e);
+            throw e;
         }
     }
 
@@ -44,6 +47,7 @@ class UsersController {
         } catch (e) {
             logger.error(`Method UsersController.updateUser with user=${JSON.stringify(user)}`);
             logger.error(e);
+            throw e;
         }
     }
 
@@ -54,6 +58,7 @@ class UsersController {
         } catch (e) {
             logger.error(`Method UsersController.deleteUser with id=${id}`);
             logger.error(e);
+            throw e;
         }
     }
 
@@ -64,6 +69,7 @@ class UsersController {
         } catch (e) {
             logger.error(`Method UsersController.addUser with user=${JSON.stringify(user)}`);
             logger.error(e);
+            throw e;
         }
     }
 
@@ -76,6 +82,7 @@ class UsersController {
         } catch (e) {
             logger.error(`Method UsersController.addUsersToGroup with userIds=${userIds} and userIds=${groupId}`);
             logger.error(e);
+            throw e;
         }
     }
 }

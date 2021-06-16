@@ -9,60 +9,95 @@ const router = express.Router();
 router.get('/byId', async (req, res, next) => {
     const userId: string = req.query.id.toString();
     if (!!userId) {
-        const user: void | IUser = await usersService.getUser(userId).catch(next);
-        if (!!user) {
-            res.json(user);
+        try {
+            const user: void | IUser = await usersService.getUser(userId);
+            if (!!user) {
+                res.json(user);
+                return;
+            }
+            res.send(`User with id='${userId}' not found`);
+            return;
+        } catch (e) {
+            next(e);
             return;
         }
-        res.send(`User with id='${userId}' not found`);
-        return;
     }
     res.status(400).send('Bad data. Please check your request.');
 });
 
 router.get('/', async (req, res, next) => {
-    const users: void | IUser[] = await usersService.getAllUsers().catch(next);
-    res.json(users);
+    try {
+        const users: void | IUser[] = await usersService.getAllUsers();
+        res.json(users);
+    } catch (e) {
+        next(e);
+        return;
+    }
 });
 
 router.get('/autoSuggest', async (req, res, next) => {
     if (!!req.query.loginSubstring && !!req.query.limit) {
         const loginSubstring: string = req.query.loginSubstring.toString();
         const limit: number = Number.parseInt(req.query.limit.toString(), 10);
-        const users: void | IUser[] = await usersService.getAutoSuggestUsers(loginSubstring, limit).catch(next);
-        res.json(users);
-        return;
+        try {
+            const users: void | IUser[] = await usersService.getAutoSuggestUsers(loginSubstring, limit);
+            res.json(users);
+            return;
+        } catch (e) {
+            next(e);
+            return;
+        }
     }
     res.status(400).send('Bad data. Please check your request.');
 });
 
 router.post('/addUser', fieldsValidation, async (req, res, next) => {
     const user: IUser = req.body;
-    const newUser: void | IUser = await usersService.createUser(user).catch(next);
-    res.status(201).send(newUser);
-    return;
+    try {
+        const newUser: void | IUser = await usersService.createUser(user);
+        res.status(201).send(newUser);
+        return;
+    } catch (e) {
+        next(e);
+        return;
+    }
 });
 
 router.put('/updateUser', fieldsValidation, async (req, res, next) => {
     const user: IUser = req.body;
-    const users: void | IUser[] = await usersService.updateUser(user).catch(next);
-    res.status(201).send(users);
-    return;
+    try {
+        const users: void | IUser[] = await usersService.updateUser(user);
+        res.status(201).send(users);
+        return;
+    } catch (e) {
+        next(e);
+        return;
+    }
 });
 
 router.post('/addUsersToGroup', async (req, res, next) => {
     const usersGroup: { userIds: string[], groupId: string } = req.body;
-    const newUsersGroup: void | IUserGroup[] = await usersService.addUsersToGroup(usersGroup.userIds, usersGroup.groupId).catch(next);
-    res.status(201).send(newUsersGroup);
-    return;
+    try {
+        const newUsersGroup: void | IUserGroup[] = await usersService.addUsersToGroup(usersGroup.userIds, usersGroup.groupId);
+        res.status(201).send(newUsersGroup);
+        return;
+    } catch (e) {
+        next(e);
+        return;
+    }
 });
 
 router.delete('/byId', async (req, res, next) => {
     const userId: string = req.query.id.toString();
     if (!!userId) {
-        const users: void | IUser[] = await usersService.deleteUser(userId).catch(next);
-        res.status(201).send(users);
-        return;
+        try {
+            const users: void | IUser[] = await usersService.deleteUser(userId);
+            res.status(201).send(users);
+            return;
+        } catch (e) {
+            next(e);
+            return;
+        }
     }
     res.status(400).send('Bad data. Please check your request.');
     return;
