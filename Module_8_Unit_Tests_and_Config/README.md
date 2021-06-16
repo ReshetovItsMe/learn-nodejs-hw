@@ -12,7 +12,3 @@ The task is a continuation of [Module 7. JWT authorization and CORS](https://git
 ## Task 2
 
 The information on DB connection (connection string) should be stored in .env file and should be passed to the application using environment variables with the help of dotenv package (<https://www.npmjs.com/package/dotenv>).As an alternative package you can also use config (<https://www.npmjs.com/package/config>).
-
-## Task *
-
-Add integration tests for getUsers and createUser methods with mock sequalize.
